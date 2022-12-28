@@ -1,0 +1,42 @@
+services:
+  prometheus:
+    image: prom/prometheus:${PROMETHEUS_IMAGE_TAG}
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --web.console.libraries=/usr/share/prometheus/console_libraries
+      - --web.console.templates=/usr/share/prometheus/consoles
+      - --storage.tsdb.retention.time=${PROMETHEUS_STORAGE_TSDB_RETENTION_TIME}
+      - --storage.tsdb.retention.size=${PROMETHEUS_STORAGE_TSDB_RETENTION_SIZE}
+    restart: always
+    volumes:
+      - ./prometheus_provisioning/prometheus-config.yaml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    network_mode: "host"
+  
+  grafana:
+    image: grafana/grafana:${GRAFANA_IMAGE_TAG}
+    restart: always
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD}
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana_provisioning:/etc/grafana/provisioning:ro
+      - ./grafana_dashboards:/etc/dashboards:ro
+    network_mode: "host"
+
+volumes:
+  prometheus_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: "${PROM_DATA_DIR}"
+      o: bind
+
+  grafana_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: "${GRAFANA_DATA_DIR}"
+      o: bind     
