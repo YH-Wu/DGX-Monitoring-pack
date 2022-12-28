@@ -1,7 +1,7 @@
 **FIRST DEPLOYMENT**
 
 It's suggest to put this folder to a external storage and mount this folder on every node so that every node could read same file.
-
+<br><br><br>
 **DEPLOYMENT FOR DCGM EXPORTER AND NODE EXPORTER**
 
 Just launch start_exporter.sh in every compute node that you want to monitor.
