@@ -8,7 +8,7 @@ Just launch start_exporter.sh in every compute node that you want to monitor.
 <br><br><br>
 **DEPLOYMENT FOR MONITORING SERVICES**
 
-1. Fill IPs of every compute node in prometheus_provisioning/prometheus-config.yaml
+1. Fill IPs of every compute node in prometheus_provisioning/prometheus-config.yaml, by default DCGM exporter uses 9400 port, node exporter uses 9100 port, prometheus server uses 9090 port, grafana server uses 3000 port, pleaes make sure those are avaliable for use in your environment.
 2. Fill the folder path that you want to store your metric data and the desire db size and store time in .env., especially following environment variable:
 
    PROM_DATA_DIR=/path/to/store/promdata
@@ -26,6 +26,13 @@ Just launch start_exporter.sh in every compute node that you want to monitor.
 
 1. Fill new IPs of every compute node in prometheus_provisioning/prometheus-config.yaml
 2. Launch restart_monitoring.sh to restart Prometheus and Grafana service on the monitoring node.
+<br><br><br>
+
+**HAPPY MONITORING**
+
+1. Check you Prometheus via browser : <Prometheus_IP>:9090
+2. Check you Grafana Dashboard via browser : <Prometheus_IP>:3000
+
 <br><br><br>
 
 **FOR DEBUG**
