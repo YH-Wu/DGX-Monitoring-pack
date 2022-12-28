@@ -9,7 +9,7 @@ Just launch start_exporter.sh in every compute node that you want to monitor.
 **DEPLOYMENT FOR MONITORING SERVICES**
 
 1. Fill IPs of every compute node in prometheus_provisioning/prometheus-config.yaml
-2. Fill the folder path that you want to store your metric data and the desire db size and store time in ./.env., especially following environment variable:
+2. Fill the folder path that you want to store your metric data and the desire db size and store time in .env., especially following environment variable:
 
    PROM_DATA_DIR=/path/to/store/promdata
    
