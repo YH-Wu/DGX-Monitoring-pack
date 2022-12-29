@@ -1,1 +1,1 @@
-docker compose -f monitoring.yaml up -d
+docker compose -f ../monitoring.yaml up -d
