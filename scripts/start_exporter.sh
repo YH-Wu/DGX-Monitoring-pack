@@ -1,1 +1,1 @@
-docker compose -f exporter.yaml up -d
+docker compose -f ../exporter.yaml up -d
