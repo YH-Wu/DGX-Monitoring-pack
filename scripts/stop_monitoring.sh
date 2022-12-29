@@ -1,1 +1,1 @@
-docker compose -f monitoring.yaml down -v
+docker compose -f ../monitoring.yaml down -v
